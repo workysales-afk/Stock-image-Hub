@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Stock Images - Pexels</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1 class="logo">
+                    <i>📸</i>
+                    FreeStockHub
+                </h1>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search images... (nature, city, food)">
+                    <button id="searchBtn">🔍 Search</button>
+                </div>
+                <div class="nav-buttons">
+                    <button id="favoritesBtn">❤️ Favorites (<span id="favCount">0</span>)</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ADSENSE HEADER BANNER -->
+    <div class="adsense-banner">
+        🔔 **ADSENSE BANNER (728x90) YAHAN LAGANA HAI**<br>
+        <small>Google AdSense Leaderboard Unit Code Paste Karein</small>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <div id="loadingSpinner" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Loading amazing images...</p>
+        </div>
+
+        <section class="hero">
+            <h2>🔥 10M+ Free Stock Photos</h2>
+            <p>High Quality Images powered by Pexels API</p>
+        </section>
+
+        <section class="images-grid" id="imagesGrid"></section>
+
+        <div class="pagination" id="pagination">
+            <button id="prevPage" disabled>← Previous</button>
+            <span id="pageInfo">Page 1</span>
+            <button id="nextPage">Next →</button>
+        </div>
+    </main>
+
+    <!-- ADSENSE SIDEBAR -->
+    <div class="adsense-sidebar">
+        📢 **ADSENSE SIDEBAR (300x250) YAHAN LAGANA HAI**<br>
+        <small>Medium Rectangle Ad Unit Code Paste Karein</small>
+    </div>
+
+    <!-- Favorites Modal -->
+    <div id="favoritesModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>❤️ My Favorites</h3>
+                <button id="closeModal">×</button>
+            </div>
+            <div id="favoritesGrid" class="favorites-grid">
+                <p>No favorites yet. Start adding some! 😊</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal hidden">
+        <div class="image-modal-content">
+            <span class="close-modal">×</span>
+            <img id="modalImage" src="" alt="">
+            <div class="image-info">
+                <p id="imagePhotographer"></p>
+                <div class="modal-actions">
+                    <a id="downloadBtn" target="_blank">⬇️ Download Original</a>
+                    <button id="addToFavModal">❤️ Add to Favorites</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase + Pexels CDN -->
+    <script type="module">
+        // PEXELS API READY ✅
+        window.pexelsApiKey = 'AsAeHbkwF90qcWmKQnnnKC0VaAo43qobVoZSSbrlRinzRfDOTLjDoJMD';
+        
+        // FIREBASE READY ✅
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDvd3f3JvoHEdnw46HNMHm13DZ392FL4NM",
+            authDomain: "free-stock-images-9e7a0.firebaseapp.com",
+            projectId: "free-stock-images-9e7a0",
+            storageBucket: "free-stock-images-9e7a0.firebasestorage.app",
+            messagingSenderId: "927985896075",
+            appId: "1:927985896075:web:1c298e8c38e6dae1c0228e"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        window.db = getFirestore(app);
+        window.favoritesRef = collection(window.db, 'favorites');
+        
+        // Export functions globally
+        window.firebaseFunctions = { addDoc, getDocs, doc, deleteDoc, onSnapshot };
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
