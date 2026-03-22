@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeStockHub - Premium Stock Images</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <i class="fas fa-camera"></i>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="auth-modal">
+        <div class="auth-container">
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Login</button>
+                <button class="auth-tab" data-tab="signup">Sign Up</button>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active">
+                <h2>Welcome Back!</h2>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="auth-form">
+                <h2>Create Account</h2>
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo-section">
+                    <i class="fas fa-camera-retro logo-icon"></i>
+                    <h1>FreeStockHub</h1>
+                </div>
+                
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Search 10M+ free images...">
+                    <button id="searchBtn"><i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <div class="nav-actions">
+                    <button id="favoritesBtn" class="nav-btn">
+                        <i class="fas fa-heart"></i>
+                        <span id="favCount">0</span>
+                    </button>
+                    <button id="authBtn" class="nav-btn login-btn">
+                        <i class="fas fa-user"></i> Login
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>10M+ <span class="gradient-text">Free Stock Photos</span></h1>
+            <p>Download high-quality images for your projects. No attribution required.</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">10M+</div>
+                    <div>Images</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">500K+</div>
+                    <div>Photographers</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div>Free</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADSENSE TOP BANNER -->
+    <div class="adsense-top">
+        <div class="adsense-placeholder">
+            🔔 **ADSENSE RESPONSIVE BANNER (728x90 OR 320x100)**<br>
+            <small>Leaderboard / Mobile Leaderboard Code Here</small>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-wrapper">
+            <!-- Filters -->
+            <div class="filters-section">
+                <button class="filter-btn active" data-filter="popular">Popular</button>
+                <button class="filter-btn" data-filter="nature">Nature</button>
+                <button class="filter-btn" data-filter="technology">Technology</button>
+                <button class="filter-btn" data-filter="people">People</button>
+                <button class="filter-btn" data-filter="business">Business</button>
+            </div>
+
+            <!-- Loading -->
+            <div id="loadingSpinner" class="loading-spinner hidden">
+                <div class="spinner"></div>
+                <p>Finding perfect images for you...</p>
+            </div>
+
+            <!-- Images Grid -->
+            <div class="images-grid" id="imagesGrid"></div>
+
+            <!-- Pagination -->
+            <div class="pagination-container" id="pagination">
+                <button id="prevPage" class="page-btn" disabled>
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <span id="pageInfo" class="page-info">Page 1</span>
+                <button id="nextPage" class="page-btn">Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- ADSENSE SIDEBAR -->
+            <div class="adsense-sidebar">
+                <div class="adsense-placeholder sidebar-ad">
+                    📱 **ADSENSE SIDEBAR (300x250 OR 336x280)**<br>
+                    <small>Medium Rectangle Code Here</small>
+                </div>
+            </div>
+
+            <!-- Trending Section -->
+            <div class="trending-section">
+                <h3><i class="fas fa-fire"></i> Trending Searches</h3>
+                <div class="trending-tags">
+                    <span class="tag">Nature</span>
+                    <span class="tag">City</span>
+                    <span class="tag">Food</span>
+                    <span class="tag">People</span>
+                    <span class="tag">Technology</span>
+                    <span class="tag">Business</span>
+                    <span class="tag">Abstract</span>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal hidden">
+        <div class="image-modal-content">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <img id="modalImage" src="" alt="">
+            <div class="modal-details">
+                <div class="photographer-info">
+                    <i class="fas fa-user"></i>
+                    <span id="imagePhotographer"></span>
+                </div>
+                <div class="modal-actions">
+                    <a id="downloadBtn" class="action-btn download-btn" target="_blank">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                    <button id="shareBtn" class="action-btn share-btn">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <button id="addToFavModal" class="action-btn fav-btn">
+                        <i class="fas fa-heart"></i> Favorite
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase + Pexels -->
+    <script type="module">
+        window.pexelsApiKey = 'AsAeHbkwF90qcWmKQnnnKC0VaAo43qobVoZSSbrlRinzRfDOTLjDoJMD';
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getFirestore, collection

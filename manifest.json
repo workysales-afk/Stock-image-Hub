@@ -1,0 +1,15 @@
+{
+    "name": "FreeStockHub",
+    "short_name": "StockHub",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#667eea",
+    "theme_color": "#667eea",
+    "icons": [
+        {
+            "src": "https://images.pexels.com/images/pexels-favicon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
